@@ -99,3 +99,7 @@
 .delete-icon {
   padding: 15px;
 }
+
+.checked {
+  text-decoration: line-through;
+}
