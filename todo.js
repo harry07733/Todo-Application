@@ -18,7 +18,7 @@ function getTodoListFromLocalStorage(){
     }
 }
 
-todoList = getTodoListFromLocalStorage();
+let todoList = getTodoListFromLocalStorage();
 
 
 let todoCount = todoList.length;
@@ -38,8 +38,20 @@ function onTodoStatusChanged(checkboxId, labelId) {
 
 function onDeleteTodo(todoId) {
     let todoElement = document.getElementById(todoId);
-
     todoItemsContainer.removeChild(todoElement);
+    
+    let deleteElementIndex = todoList.findIndex(
+        function(eachTodo){
+            let eachTodoId = "todo" + eachTodo.uniqueNo;
+            if(eachTodoId === todoId){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    );
+    todoList.splice(deleteElementIndex, 1);
 }
 
 function createAndAppendTodo(todo) {
